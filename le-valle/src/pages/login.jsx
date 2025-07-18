@@ -73,7 +73,7 @@ const login = () => {
 
           <div className="flex flex-col gap-3 items-center">
             <Link
-                to={'/home'}
+                to={'/valle'}
               type="submit"
               disabled={isSubmitting}
               className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm min-w-[150px] py-2 px-6 text-center whitespace-nowrap transition-all duration-200"
