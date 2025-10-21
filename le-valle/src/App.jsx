@@ -14,13 +14,13 @@ const App = () => {
         {/* Public routes */}
         <Route path="/" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
-
-        <Route path="/" element={<Dashboard />}>
+{/* 
+        <Route path="/" element={<Dashboard />}> */}
           <Route path="admin" element={<AdminBoard />} />
           <Route path="valle" element={<ValletBoard />} />
           {/* <Route path="post/view/:postid" element={<ViewBlog />} />
           <Route path="create" element={<Create />} /> */}
-        </Route>
+        {/* </Route> */}
 
        
       </Routes>

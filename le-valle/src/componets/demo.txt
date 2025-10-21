@@ -1,0 +1,134 @@
+<div className="p-6 bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl shadow-lg">
+  {/* Header */}
+  <div className="flex items-center justify-between mb-6">
+    <h1 className="text-2xl font-bold text-gray-800">Valet Performance Dashboard</h1>
+    <button
+      type="button"
+      className="text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 shadow-sm transition-all"
+    >
+      Light
+    </button>
+  </div>
+
+  {/* Table */}
+  <div className="relative overflow-x-auto shadow-md sm:rounded-lg bg-white">
+    <table className="w-full text-sm text-left text-gray-600">
+      <thead className="text-xs text-gray-700 uppercase bg-gray-100">
+        <tr>
+          <th className="px-6 py-3">Valet</th>
+          <th className="px-6 py-3">Status</th>
+          <th className="px-6 py-3">Cars Parked</th>
+          <th className="px-6 py-3">Avg. Time</th>
+          <th className="px-6 py-3">Performance</th>
+          <th className="px-6 py-3">Rating</th>
+          <th className="px-6 py-3">Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {[1, 2, 3].map((_, i) => (
+          <tr
+            key={i}
+            className="bg-white border-b hover:bg-gray-50 transition-all"
+          >
+            {/* Valet Info */}
+            <td className="px-6 py-4 font-medium text-gray-900 flex items-center gap-3">
+              <div className="p-3 w-10 h-10 flex items-center justify-center rounded-full bg-blue-500 text-white font-bold">
+                MJ
+              </div>
+              <div>
+                <p className="font-semibold text-gray-800">Michel Johnson</p>
+                <p className="text-xs text-gray-500">ID: V00{i + 1}</p>
+              </div>
+            </td>
+
+            {/* Status */}
+            <td className="px-6 py-4">
+              <span className="px-3 py-1 text-xs font-semibold text-green-700 bg-green-100 rounded-full">
+                Active
+              </span>
+            </td>
+
+            {/* Cars */}
+            <td className="px-6 py-4">
+              <p className="font-semibold text-gray-800">23</p>
+              <p className="text-xs text-green-500">+5 from yesterday</p>
+            </td>
+
+            {/* Avg Time */}
+            <td className="px-6 py-4">
+              <p className="font-semibold text-gray-800">2.8 min</p>
+              <p className="text-xs text-red-500">-0.3 min</p>
+            </td>
+
+            {/* Performance Progress */}
+            <td className="px-6 py-4">
+              <div className="flex flex-col items-center">
+                <h2 className="text-sm font-semibold text-gray-700 mb-2">
+                  Project Completion
+                </h2>
+                <div className="relative w-32 bg-gray-200 rounded-full h-4 overflow-hidden shadow-inner">
+                  <div
+                    className="absolute top-0 left-0 h-full bg-green-500 transition-all duration-700 ease-in-out"
+                    style={{ width: "75%" }}
+                  ></div>
+                  <span className="absolute inset-0 flex items-center justify-center text-xs font-semibold text-white">
+                    75%
+                  </span>
+                </div>
+              </div>
+            </td>
+
+            {/* Rating */}
+            <td className="px-6 py-4">
+              <div className="flex flex-col items-center">
+                <div className="flex space-x-1">
+                  {[1, 2, 3, 4].map((n) => (
+                    <svg
+                      key={n}
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="w-5 h-5 text-yellow-400"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.288 3.97a1 1 0 00.95.69h4.18c.97 0 1.371 1.24.588 1.81l-3.387 2.46a1 1 0 00-.364 1.118l1.288 3.97c.3.921-.755 1.688-1.54 1.118l-3.387-2.46a1 1 0 00-1.175 0l-3.387 2.46c-.785.57-1.84-.197-1.54-1.118l1.288-3.97a1 1 0 00-.364-1.118L2.043 9.397c-.783-.57-.382-1.81.588-1.81h4.18a1 1 0 00.95-.69l1.288-3.97z" />
+                    </svg>
+                  ))}
+
+                  {/* Empty Star */}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-5 h-5 text-gray-300"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.288 3.97a1 1 0 00.95.69h4.18c.97 0 1.371 1.24.588 1.81l-3.387 2.46a1 1 0 00-.364 1.118l1.288 3.97c.3.921-.755 1.688-1.54 1.118l-3.387-2.46a1 1 0 00-1.175 0l-3.387 2.46c-.785.57-1.84-.197-1.54-1.118l1.288-3.97a1 1 0 00-.364-1.118L2.043 9.397c-.783-.57-.382-1.81.588-1.81h4.18a1 1 0 00.95-.69l1.288-3.97z" />
+                  </svg>
+                </div>
+                <p className="text-xs text-gray-500 mt-1">4.0 / 5</p>
+              </div>
+            </td>
+
+            {/* Actions */}
+            <td className="px-6 py-4">
+              <div className="flex gap-2 justify-center">
+                <button
+                  type="button"
+                  className="text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-xs px-4 py-2 shadow-sm transition-all"
+                >
+                  Green
+                </button>
+                <button
+                  type="button"
+                  className="text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-xs px-4 py-2 shadow-sm transition-all"
+                >
+                  Red
+                </button>
+              </div>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</div>

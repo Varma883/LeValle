@@ -9,7 +9,8 @@ const Login = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
 
-  const [formData, setFormData] = useState({ email: "", password: "" });
+  // ✅ Changed "email" → "userName" to match backend
+  const [formData, setFormData] = useState({ userName: "", password: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
@@ -22,11 +23,14 @@ const Login = () => {
     setIsSubmitting(true);
 
     try {
+      // ✅ Send correct payload
       const response = await axios.post(`${API_BASE_URL}/v1/auth/login`, formData);
       const { data, message } = response.data;
 
-      if (data.accessToken) {
+      if (data?.accessToken) {
         toast.success(message || "Login successful");
+
+        // ✅ Save auth details in context/localStorage
         login(data.accessToken, {
           username: data.username,
           role: data.role,
@@ -34,7 +38,9 @@ const Login = () => {
           hostName: data.hostName,
           scopes: data.scopes,
         });
-        navigate("/dashboard", { replace: true });
+
+        console.log("Login success:", data);
+        navigate("/admin", { replace: true });
       } else {
         toast.error("Invalid credentials");
       }
@@ -58,31 +64,32 @@ const Login = () => {
         </div>
 
         <form className="mt-3" onSubmit={handleLogin}>
+          {/* ✅ USERNAME FIELD */}
           <div className="mb-5">
             <label
-              htmlFor="email"
+              htmlFor="userName"
               className="block mb-2 text-sm font-medium text-gray-900"
             >
-              Your email
+              Username
             </label>
             <input
-              
-              id="email"
-              name="email"
-              value={formData.email}
+              id="userName"
+              name="userName"
+              value={formData.userName}
               onChange={handleChange}
               className="bg-gray-100 border border-gray-200 text-gray-900 text-sm rounded-lg w-full p-2.5"
-              placeholder="youremailid@domain.com"
+              placeholder="Enter your username"
               required
             />
           </div>
 
+          {/* ✅ PASSWORD FIELD */}
           <div className="mb-5">
             <label
               htmlFor="password"
               className="block mb-2 text-sm font-medium text-gray-900"
             >
-              Your password
+              Password
             </label>
             <input
               type="password"
@@ -95,6 +102,7 @@ const Login = () => {
             />
           </div>
 
+          {/* ✅ SUBMIT BUTTON */}
           <div className="flex flex-col gap-3 items-center">
             <button
               type="submit"
